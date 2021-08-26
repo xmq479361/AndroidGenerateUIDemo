@@ -1,0 +1,13 @@
+rootProject.name = "AndroidBindDemo"
+include ':app'
+include ':XBindAnnotation'
+
+// TODO APT自动生生代理模板类
+include ":APTDelegate:Compiler"
+project(':APTDelegate:Compiler').projectDir = new File("APTDelegate\\XBindCompiler") //对应Module的路径
+
+// TODO asm字节码动态织入
+include ":AutoDelegate:XBindCompiler", ":AutoDelegate:XBindCore", ":AutoDelegate:XBindPlugin"
+project(':AutoDelegate:XBindCompiler').projectDir = new File("ASMAutoDelegate\\XBindCompiler") //对应Module的路径
+project(':AutoDelegate:XBindCore').projectDir = new File("ASMAutoDelegate\\XBinderCore")
+project(':AutoDelegate:XBindPlugin').projectDir = new File("ASMAutoDelegate\\XBindPlugin")
